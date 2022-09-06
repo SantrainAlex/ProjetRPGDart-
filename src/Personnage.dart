@@ -1,18 +1,20 @@
 import 'dart:math';
 import 'Arme.dart';
+import 'races.dart';
 
 Random rdn = new Random();
 
 class personnage {
   final String name;
-  double pv;
+  int pv;
   double mana;
   int tourMax;
   int nbrTour;
   int arme;
   int armeSpe;
-  personnage(
-      this.name, this.pv, this.mana, this.tourMax, this.nbrTour, this.arme, this.armeSpe);
+  String race;
+  personnage(this.name, this.pv, this.mana, this.tourMax, this.nbrTour,
+      this.arme, this.armeSpe, this.race);
 
   printTour() {
     return 'Round N° $nbrTour ';
@@ -22,7 +24,7 @@ class personnage {
     return 'name = $name  pv = $pv  mana = $mana ';
   }
 
-  double recupPv() {
+  int recupPv() {
     double resultPv = this.pv / 2;
     print("$name augmente c'est pv ");
     this.mana = 0;
@@ -30,7 +32,7 @@ class personnage {
     return this.pv;
   }
 
-  double att(personnage adv) {
+  attribueArme() {
     switch (this.arme) {
       case 1:
         this.arme = 1;
@@ -59,7 +61,29 @@ class personnage {
       default:
         this.arme = 1;
     }
+  }
+  attribueRaces() {
+    switch (this.race) {
+      case 'orc':
+        orc maRaces = orc();
+        this.pv = maRaces.aventage;
+        break;
+      case 'elfe':
+        elfe maRaces = elfe();
+        this.mana = this.mana * maRaces.aventage;
+        break;
+      case 'archer':
+        archer maRaces = archer();
+        this.mana = this.mana * maRaces.aventage;
+        this.pv = maRaces.aventage;
+        break;
+    
+      default:
+        this.arme = 1;
+    }
+  }
 
+  int att(personnage adv) {
     int att = this.arme + rdn.nextInt(10 - 1);
     if (this.tourMax == 5) {
       int attDeux = 1 + (rdn.nextInt(10));
@@ -73,7 +97,7 @@ class personnage {
     return adv.pv;
   }
 
-  double controlPv(adv) {
+  int controlPv(adv) {
     this.mana = this.mana + 2;
     if (this.pv <= 30 && this.mana >= 100) {
       return this.recupPv();

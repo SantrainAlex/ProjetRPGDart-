@@ -4,12 +4,18 @@ import 'dart:math';
 Random rdn = new Random();
 
 void main() {
-  const double initialPv = 100;
+  const int initialPv = 100;
   const int initial = 0;
   personnage PersoUn =
-      personnage('alexis', initialPv, 100, initial, initial, 3, 0);
+      personnage('alexis', initialPv, 100, initial, initial, 3, 0, 'orc');
   personnage Persodeux =
-      personnage('jeje ', initialPv, 100, initial, initial, 4, 0);
+      personnage('jeje ', initialPv, 100, initial, initial, 4, 0, 'archer');
+
+  PersoUn.attribueArme();
+  Persodeux.attribueArme();
+  PersoUn.attribueRaces();
+  Persodeux.attribueRaces();
+  
   var boolValue = Random().nextBool();
 
   if (boolValue == true) {
