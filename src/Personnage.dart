@@ -9,9 +9,10 @@ class personnage {
   double mana;
   int tourMax;
   int nbrTour;
-  double arme;
+  int arme;
+  int armeSpe;
   personnage(
-      this.name, this.pv, this.mana, this.tourMax, this.nbrTour, this.arme);
+      this.name, this.pv, this.mana, this.tourMax, this.nbrTour, this.arme, this.armeSpe);
 
   printTour() {
     return 'Round N° $nbrTour ';
@@ -30,7 +31,36 @@ class personnage {
   }
 
   double att(personnage adv) {
-    double att = this.arme + rdn.nextInt(10 - 1);
+    switch (this.arme) {
+      case 1:
+        this.arme = 1;
+        break;
+      case 2:
+        Baton monArme = Baton();
+        this.arme = monArme.PointAtt;
+        switch (this.armeSpe) {
+          case 1:
+            barbele monArme = barbele();
+            this.arme = monArme.PointAtt;
+        }
+        break;
+      case 3:
+        couteau monArme = couteau();
+        this.arme = monArme.PointAtt;
+        break;
+      case 4:
+        fusil monArme = fusil();
+        this.arme = monArme.PointAtt;
+        break;
+      case 5:
+        pompe monArme = pompe();
+        this.arme = monArme.PointAtt;
+        break;
+      default:
+        this.arme = 1;
+    }
+
+    int att = this.arme + rdn.nextInt(10 - 1);
     if (this.tourMax == 5) {
       int attDeux = 1 + (rdn.nextInt(10));
 

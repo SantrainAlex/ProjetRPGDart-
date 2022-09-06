@@ -6,9 +6,10 @@ Random rdn = new Random();
 void main() {
   const double initialPv = 100;
   const int initial = 0;
-  personnage PersoUn = personnage('alexis', initialPv, 100, initial, initial, 1);
-  personnage Persodeux = personnage('jeje ', initialPv, 100, initial, initial, 1);z
-
+  personnage PersoUn =
+      personnage('alexis', initialPv, 100, initial, initial, 3, 0);
+  personnage Persodeux =
+      personnage('jeje ', initialPv, 100, initial, initial, 4, 0);
   var boolValue = Random().nextBool();
 
   if (boolValue == true) {
@@ -20,8 +21,12 @@ void main() {
       PersoUn.pv > 0 ? print(PersoUn.printPerso()) : "";
       PersoUn.controlPv(Persodeux);
       Persodeux.pv > 0 ? print(Persodeux.printPerso()) : "";
-      PersoUn.pv <= 30 && PersoUn.mana >= 100 ? PersoUn.tourMax = PersoUn.tourMax + 1 : "";
-      Persodeux.pv <= 30 && Persodeux.mana >= 100 ? Persodeux.tourMax = Persodeux.tourMax + 1 : "";
+      PersoUn.pv <= 30 && PersoUn.mana >= 100
+          ? PersoUn.tourMax = PersoUn.tourMax + 1
+          : "";
+      Persodeux.pv <= 30 && Persodeux.mana >= 100
+          ? Persodeux.tourMax = Persodeux.tourMax + 1
+          : "";
       PersoUn.nbrTour = PersoUn.nbrTour + 1;
       print('');
       if (PersoUn.pv <= 0) {
@@ -40,8 +45,12 @@ void main() {
       Persodeux.pv > 0 ? print(Persodeux.printPerso()) : "";
       Persodeux.controlPv(PersoUn);
       Persodeux.pv > 0 ? print(PersoUn.printPerso()) : "";
-      PersoUn.pv <= 30 && PersoUn.mana >= 100 ? PersoUn.tourMax = PersoUn.tourMax + 1 : "";
-      Persodeux.pv <= 30 && Persodeux.mana >= 100 ? Persodeux.tourMax = Persodeux.tourMax + 1 : "";
+      PersoUn.pv <= 30 && PersoUn.mana >= 100
+          ? PersoUn.tourMax = PersoUn.tourMax + 1
+          : "";
+      Persodeux.pv <= 30 && Persodeux.mana >= 100
+          ? Persodeux.tourMax = Persodeux.tourMax + 1
+          : "";
       PersoUn.nbrTour = PersoUn.nbrTour + 1;
       print(' ');
       if (PersoUn.pv <= 0) {
